@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:loan_user_app/constants/snackbar.dart';
+import 'package:loan_user_app/providers/wallet_management_provider.dart';
+import 'package:provider/provider.dart';
 import '../../models/Deposits.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
@@ -29,19 +31,21 @@ class _DepositHistoryScreenState extends State<DepositHistoryScreen> {
 
   Future<void> generateAndSavePdf() async {
     final pdf = pw.Document();
-
+    var demoDeposits =
+        Provider.of<WalletManagementProvider>(context, listen: false)
+            .depositwalletlist;
     pdf.addPage(
       pw.Page(
         build: (pw.Context context) {
           return pw.Table.fromTextArray(
-            headers: ['Amount', 'History', 'Account Number', 'Date', 'Status'],
+            headers: ['Name', 'Amount', 'Account Number', 'Date'],
             data: demoDeposits.map((deposit) {
               return [
-                deposit.amount,
-                deposit.history,
-                deposit.accountNumber,
-                deposit.date,
-                deposit.isSuccess ? 'Success' : 'Failed'
+                deposit['wallet']['user']['username'] ?? '--',
+                deposit['amount'],
+                deposit['wallet']['id'],
+                deposit['created_at'],
+                // deposit.isSuccess ? 'Success' : 'Failed'
               ];
             }).toList(),
           );

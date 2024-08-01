@@ -82,7 +82,8 @@ class WalletManagementProvider with ChangeNotifier {
 
       var res = await ApiClientHttp(headers: <String, String>{
         'Content-Type': 'application/json',
-      }).getRequest("${AppConstants.getWalletDepositUrl}?id=${wallet['id']}}");
+      }).getRequest(
+          "${AppConstants.getWalletDepositUrl}?q=personal&id=${wallet['id']}");
       print("res :: $res");
       if (res == null) {
         print("RES NULL :: $res");

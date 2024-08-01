@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:loan_user_app/providers/user_management_provider.dart';
+import 'package:loan_user_app/screens/profile/components/qr_generator.dart';
 import 'package:provider/provider.dart';
 import '../sign_in/sign_in_screen.dart';
 import 'components/my_account_screen.dart';
@@ -40,12 +41,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => QRCodeScreen(data: userData,)),
+              );
+            },
+            icon: Icon(Icons.qr_code),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
             const SizedBox(height: 20),
-            ProfileHeader(),
+            // ProfileHeader(),
             const SizedBox(height: 40),
             const ProfilePic(),
             const SizedBox(height: 20),

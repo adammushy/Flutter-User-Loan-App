@@ -33,7 +33,7 @@ class LoanManagementProvider with ChangeNotifier {
         var body = res;
         if (body["error"] == false) {
           _loanList = body['data'];
-          
+
           notifyListeners();
           return true;
         }
@@ -107,6 +107,7 @@ class LoanManagementProvider with ChangeNotifier {
           getLoanList();
           return true;
         }
+        notifyListeners();
         return false;
       }
     } catch (e) {
@@ -120,7 +121,7 @@ class LoanManagementProvider with ChangeNotifier {
       var res = await ApiClientHttp(headers: <String, String>{
         'Content-Type': 'application/json',
       }).postRequest(AppConstants.getDepositUrl, data);
-        print("RES :: ${res}");
+      print("RES :: ${res}");
 
       if (res == null) {
         return false;
@@ -154,6 +155,7 @@ class LoanManagementProvider with ChangeNotifier {
         var body = res;
         if (body["error"] == false) {
           _depositlist = body['data'];
+          print("Loan deposit list ${_depositlist}");
           notifyListeners();
           return true;
         }

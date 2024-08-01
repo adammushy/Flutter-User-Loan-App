@@ -76,7 +76,7 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
                 ),
                 const SizedBox(height: 4), // Spacer between icon and text
                 Text(
-                  "Mikopo",
+                  "Loan",
                   style: TextStyle(
                     color: getIconColor(1),
                   ),

@@ -118,3 +118,12 @@ class UserManagementProvider with ChangeNotifier {
     }
   }
 }
+
+class UserInfoProvider with ChangeNotifier {
+  Map<String, dynamic> userInfo = {};
+
+  void setUserInfo(Map<String, dynamic> info) {
+    userInfo = info;
+    notifyListeners();
+  }
+}

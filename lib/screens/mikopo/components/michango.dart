@@ -33,7 +33,7 @@ class _NormalPaymentPageState extends State<NormalPaymentPage> {
   final _depositAmountController = TextEditingController();
 
   // double? _interest;
-  // double? _amount_to_pay;
+  String _amount_to_pay ='0';
   String? _selectedDuration;
   bool isTestMode = true;
 
@@ -133,6 +133,9 @@ class _NormalPaymentPageState extends State<NormalPaymentPage> {
                   //     _selectedDuration = null;
                   //   }
                   // });
+                  setState(() {
+                    _amount_to_pay = _depositAmountController.text;
+                  });
                 },
               ),
               const SizedBox(height: 16),
@@ -160,7 +163,7 @@ class _NormalPaymentPageState extends State<NormalPaymentPage> {
                       ),
                       TextSpan(
                         // text: getInterestRate().toString(),
-                        // text: widget.loanAmount.toString(),
+                        text: _amount_to_pay.toString(),
                         style: const TextStyle(
                             fontSize: 14, decoration: TextDecoration.none),
                       ),

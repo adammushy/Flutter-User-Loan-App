@@ -23,6 +23,12 @@ class _RecentLoanWidgetState extends State<RecentLoanWidget> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    Provider.of<LoanManagementProvider>(context, listen: false).getLoanList();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer<LoanManagementProvider>(
         builder: (context, recordProvider, child) {
@@ -112,6 +118,10 @@ class _RecentLoanWidgetState extends State<RecentLoanWidget> {
                                 "Interest: ${recordProvider.getloanList[index]['interest']}"),
                             Text(
                                 "Amount_remain : ${recordProvider.getloanList[index]['amount_remain']}"),
+                                   Text(
+                                "Sponsor name : ${recordProvider.getloanList[index]['sponsor_username']??'--'}"),
+                            Text(
+                                "Sponsor email : ${recordProvider.getloanList[index]['sponsor_email']??'--'}"),
                             // Text(
                             //     "Interest: ${recordProvider.getloanList[index]['interest']}"),
                             // Text(

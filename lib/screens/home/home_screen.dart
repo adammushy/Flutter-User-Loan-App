@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Categories(),
               // DiscountBanner(),
               RecentDeposits(),
-              // RecentDepositsWidget(),
+              RecentDepositsWidget(),
             ],
           ),
         ),

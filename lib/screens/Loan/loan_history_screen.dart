@@ -59,6 +59,10 @@ class _LoanHistoryScreenState extends State<LoanHistoryScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Payment duration: ${loan['duration']}"),
+                          Text("Sponsor_name: ${loan['sponsor_username']?? 'No Sponsor'}"),
+                          Text("Sponsor_name: ${loan['sponsor_email']?? 'No Sponsor'}"),
+
+
                           // Text("Account Number: ${deposit.accountNumber}"),
                           Text(
                               "Date Requested: ${formattedDate(loan['created_at'])}"),
