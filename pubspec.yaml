@@ -54,6 +54,7 @@ dependencies:
   qr_flutter: ^4.1.0
   qr_code_scanner: ^1.0.1
   pretty_qr_code: ^3.3.0
+  document_file_save_plus: ^2.0.0
 
 dev_dependencies:
   flutter_test:
